@@ -2,6 +2,6 @@
 
 ## The pull request:
 
-> [PA]()
+> [PR](https://github.com/Mustfa1999/madlib-cli/pull/1)
 
 ---
