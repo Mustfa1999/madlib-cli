@@ -8,11 +8,12 @@ def read_template(path):
     """
     try:
         file = open(path)
-        return file.read().strip()
+        content = file.read().strip()
+        file.close()
+        return content
     except FileNotFoundError:
         raise(FileNotFoundError)
-    finally:
-        file.close()
+
 
 
 def parse_template(script):
@@ -52,10 +53,11 @@ def mad_lib_game():
     return merge(script, answers)
 
 
-result = mad_lib_game()
-print(result)
+if __name__ == "__main__":
+    result = mad_lib_game()
+    print(result)
 
-with open("assets/results.txt", 'a') as file:
-    file.write(f"{result}\n")
-    file.write("-------------------\n\n")
-    file.close()
+    with open("assets/results.txt", 'a') as file:
+        file.write(f"{result}\n")
+        file.write("-------------------\n\n")
+        file.close()
