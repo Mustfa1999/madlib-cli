@@ -7,9 +7,12 @@ def read_template(path):
     It's also able to handle I/O errors.
     """
     try:
-        return open(path).read().strip()
+        file = open(path)
+        return file.read().strip()
     except FileNotFoundError:
         raise(FileNotFoundError)
+    finally:
+        file.close()
 
 
 def parse_template(script):
@@ -48,3 +51,11 @@ def mad_lib_game():
     answers = [input(f"\nChoose a {i}: ") for i in choices]
     return merge(script, answers)
 
+
+result = mad_lib_game()
+print(result)
+
+with open("assets/results.txt", 'a') as file:
+    file.write(f"{result}\n")
+    file.write("-------------------\n\n")
+    file.close()
